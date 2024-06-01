@@ -1,0 +1,11 @@
+<template id="basicLayout">
+  <div class="dark:bg-dark-bg bg-rd-bg dark:text-dark-text flex flex-col h-[100dvh]">
+    <header kll-tc="header"></header>
+    <nav kll-t="headerMenu" kll-ctrl="translate"></nav>
+    <main class="h-full relative flex-1">
+      <div class="inset-0 absolute overflow-hidden">
+        <slot></slot>
+      </div>
+    </main>
+  </div>
+</template>
