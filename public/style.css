@@ -423,3 +423,67 @@ h6 {
   color: black;
   pointer-events: none;
 }
+
+.ce-popover {
+  --color-background: theme('colors.dark.bg');
+  --color-border: theme('colors.dark.link');
+  --color-text-primary: theme('colors.dark.text');
+  --color-border-icon: theme('colors.dark.highlight');
+  --color-border-icon-disabled: theme('colors.dark.bg');
+}
+
+.ce-inline-toolbar {
+  background: theme('colors.dark.bg');
+  color: theme('colors.dark.text');
+  border-color: theme('colors.dark.link');
+}
+
+.light .ce-inline-toolbar {
+  background: theme('colors.rd.bg');
+  color: theme('colors.rd.text');
+  border-color: theme('colors.dark.link');
+}
+
+.light .ce-popover {
+  --color-background: theme('colors.rd.bg');
+  --color-border: theme('colors.dark.link');
+  --color-text-primary: theme('colors.rd.text');
+  --color-border-icon: theme('colors.dark.link');
+  --color-border-icon-disabled: theme('colors.dark.bg');
+}
+
+.ce-popover-item__icon {
+  color: theme('colors.dark.text');
+  background: theme('colors.dark.bg');
+  border-color: theme('colors.rd.sagwa_young');
+}
+
+.light .ce-popover-item__icon {
+  color: theme('colors.rd.text');
+  background: theme('colors.rd.bg');
+  border-color: theme('colors.rd.sagwa_young');
+}
+
+.ce-toolbar__plus,
+.ce-toolbar__settings-btn {
+  background-color: theme('colors.dark.bg');
+  border-color: theme('colors.dark.link');
+  color: theme('colors.dark.text');
+}
+
+.light .ce-toolbar__plus,
+.light .ce-toolbar__settings-btn {
+  background-color: theme('colors.rd.bg');
+  border-color: theme('colors.dark.link');
+  color: theme('colors.rd.text');
+}
+
+.codex-editor-overlay__rectangle {
+  background-color: theme('colors.dark.bg');
+  border-color: theme('colors.dark.link');
+}
+
+.cm-selectionBackground,
+.codex-editor ::selection {
+  background-color: rgba(82, 158, 114, 1) !important;
+}

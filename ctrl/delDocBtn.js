@@ -3,6 +3,7 @@ import { Docs } from '../utils/idb'
 
 export const delDocBtn = {
   state: {
+    id: null,
     confirm: false,
     callback: null,
     text: 'confirmDelDoc',
@@ -24,8 +25,9 @@ export const delDocBtn = {
       }
     } else {
       const editorEl = document.querySelector('[kll-id="editor"]')
+      const id = state.id || editorEl?.state.id
       state.callback = async () => {
-        await Docs.remove(editorEl?.state.id)
+        await Docs.remove(id)
         redirect()
       }
     }

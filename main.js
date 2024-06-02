@@ -20,9 +20,7 @@ const params = {
     '/': import('./pages/index.html?raw').then((m) => m.default),
     '/docs': import('./pages/docs.html?raw').then((m) => m.default),
     '/doc/:id': import('./pages/index.html?raw').then((m) => m.default),
-    '/category/:category/:section': import('./pages/index.html?raw').then(
-      (m) => m.default
-    ),
+    '/words': import('./pages/words.html?raw').then((m) => m.default),
   },
   plugins: [
     CreateComponentPlugin,
