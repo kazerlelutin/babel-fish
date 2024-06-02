@@ -130,4 +130,24 @@ export const translation = {
     en: 'Create a document',
     ko: '문서 만들기',
   },
+  params: {
+    fr: 'Paramètres',
+    en: 'Parameters',
+    ko: '매개 변수',
+  },
+  confirmDelDoc: {
+    fr: 'Êtes-vous sûr de vouloir supprimer ce document ?',
+    en: 'Are you sure you want to delete this document?',
+    ko: '이 문서를 삭제하시겠습니까?',
+  },
+  cancel: {
+    fr: 'Annuler',
+    en: 'Cancel',
+    ko: '취소',
+  },
+  delDoc: {
+    fr: 'Supprimer le document',
+    en: 'Delete document',
+    ko: '문서 삭제',
+  },
 }

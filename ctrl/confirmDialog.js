@@ -4,7 +4,14 @@ function createConfirmModal(msg, subMsg, confirmCallback, cancelCallback) {
   // create elements
   const dialog = document.createElement('dialog')
 
-  dialog.classList.add('flex', 'flex-col', 'gap-3')
+  dialog.classList.add(
+    'flex',
+    'flex-col',
+    'gap-3',
+    'bg-dark-bg',
+    'text-dark-text',
+    'rounded-md'
+  )
 
   const msgEl = document.createElement('div')
   const subMsgEl = document.createElement('div')

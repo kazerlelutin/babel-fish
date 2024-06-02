@@ -13,3 +13,4 @@ export * as wordAction from './wordAction.html?raw'
 
 export * as documents from "./documents.html?raw"
 export * as addDocBtn from "./addDocBtn.html?raw"
+export * as delDocBtn from "./delDocBtn.html?raw"

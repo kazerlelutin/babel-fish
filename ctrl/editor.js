@@ -12,6 +12,7 @@ export const editor = {
     editor: undefined,
     updatedAt: Date.now(),
     content: undefined,
+    id: undefined,
   },
   async onInit(state) {
     const { params } = kll.parseRoute()
@@ -22,6 +23,7 @@ export const editor = {
 
     const doc = params.id ? await Docs.getById(parseInt(params.id)) : docs[0]
 
+    state.id = doc.id
     const editor = new EditorJS({
       holder: 'editorContainer',
       autofocus: true,

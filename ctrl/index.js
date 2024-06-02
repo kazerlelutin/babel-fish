@@ -12,3 +12,4 @@ export * from './wordPreviewClose'
 export * from "./wordAction"
 export * from "./documents"
 export * from "./addDocBtn"
+export * from "./delDocBtn"
