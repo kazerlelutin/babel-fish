@@ -1,4 +1,9 @@
+import { kll } from '../main'
+
 export const wordPreviewClose = {
+  onInit(_, el) {
+    kll.plugins.translate(el)
+  },
   async onclick() {
     // === SELECTION ================================
     const allSelectedWords = document.querySelectorAll('.selected-word')

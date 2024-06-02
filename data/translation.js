@@ -150,4 +150,9 @@ export const translation = {
     en: 'Delete document',
     ko: '문서 삭제',
   },
+  close: {
+    fr: 'Fermer',
+    en: 'Close',
+    ko: '닫기',
+  },
 }

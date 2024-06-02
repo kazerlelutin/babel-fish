@@ -154,8 +154,8 @@ export const readDoc = {
           await Words.update(word)
         })
 
-        kll.reload(container)
         kll.plugins.translate(container)
+        kll.reload(container)
       })
     }
   },
