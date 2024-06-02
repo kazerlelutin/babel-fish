@@ -139,10 +139,23 @@ export const readDoc = {
           const action = actionTemplate.cloneNode(true)
           action.innerText = translation[state][lang]
 
-          action.setAttribute('kll-ctrl', 'wordAction')
-          action.setAttribute('kll-s-state', state)
           action.setAttribute('data-state', state)
-          action.setAttribute('kll-s-word', word.name)
+          action.setAttribute('data-word', word.name)
+
+          action.addEventListener('click', async () => {
+            await Words.update({
+              ...word,
+              state,
+            })
+
+            const actions = document.querySelectorAll('[data-action]')
+            actions.forEach((act) => act.removeAttribute('disabled'))
+            action.setAttribute('disabled', true)
+
+            const doc = document.querySelector('[kll-id="editor"]')
+            doc.state.updateAt = Date.now()
+          })
+
           if (word.state === state) action.setAttribute('disabled', true)
           actionsContainer.appendChild(action)
         }

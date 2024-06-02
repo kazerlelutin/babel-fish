@@ -8,9 +8,7 @@ export * from './editor'
 export * from './tabs'
 export * from './readDoc'
 export * from './wordPreviewClose'
-
-export * from "./wordAction"
-export * from "./documents"
-export * from "./addDocBtn"
-export * from "./delDocBtn"
-export * from "./words"
+export * from './documents'
+export * from './addDocBtn'
+export * from './delDocBtn'
+export * from './words'
