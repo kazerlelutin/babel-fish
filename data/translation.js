@@ -85,4 +85,44 @@ export const translation = {
     en: 'Words',
     ko: '단어',
   },
+  close: {
+    fr: 'Fermer',
+    en: 'Close',
+    ko: '닫기',
+  },
+  known: {
+    fr: 'Connu',
+    en: 'Known',
+    ko: '알려진',
+  },
+  recognized: {
+    fr: 'Reconnu',
+    en: 'Recognized',
+    ko: '인정된',
+  },
+  familiar: {
+    fr: 'Familier',
+    en: 'Familiar',
+    ko: '익숙한',
+  },
+  unknown: {
+    fr: 'Inconnu',
+    en: 'Unknown',
+    ko: '알려지지 않음',
+  },
+  myStats: {
+    fr: 'Mes stats',
+    en: 'My stats',
+    ko: '내 통계',
+  },
+  noInfo: {
+    fr: "Pas d'information",
+    en: 'No information',
+    ko: '정보 없음',
+  },
+  translationPlaceholder: {
+    fr: 'Traduction',
+    en: 'Translation',
+    ko: '번역',
+  },
 }

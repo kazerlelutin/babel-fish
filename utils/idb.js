@@ -29,6 +29,7 @@ const STORES = {
       INFO: 'info',
       EMOJI: 'emoji',
       LANG: 'lang',
+      UPDATED_AT: 'updatedAt',
     },
   },
 }
@@ -145,7 +146,8 @@ async function getDocuments() {
 async function getDocument(id) {
   const transaction = idb.transaction([STORES.DOCS.NAME], 'readonly')
   const store = transaction.objectStore(STORES.DOCS.NAME)
-  const request = store.get(id)
+  const index = store.index(STORES.WORDS.INDEXES.NAME)
+  const request = index.get(id)
 
   return await new Promise((resolve, reject) => {
     request.onsuccess = () => resolve(request.result)
@@ -170,7 +172,10 @@ async function removeDocument(id) {
 async function updateDocument(doc) {
   const transaction = idb.transaction([STORES.DOCS.NAME], 'readwrite')
   const store = transaction.objectStore(STORES.DOCS.NAME)
-  const request = store.put(doc)
+  const request = store.put({
+    ...doc,
+    updatedAt: Date.now(),
+  })
 
   await new Promise((resolve, reject) => {
     request.onsuccess = () => resolve()
@@ -193,21 +198,59 @@ async function getWords() {
   })
 }
 
-async function getWord(id) {
-  const transaction = idb.transaction([STORES.WORDS.NAME], 'readonly')
+async function getWord(word) {
+  const transaction = idb.transaction([STORES.WORDS.NAME], 'readwrite')
   const store = transaction.objectStore(STORES.WORDS.NAME)
-  const request = store.get(id)
+  const index = store.index(STORES.WORDS.INDEXES.NAME)
+  const request = index.get(word.toLowerCase())
+
+  const result = await new Promise((resolve, reject) => {
+    request.onsuccess = () => resolve(request.result)
+    request.onerror = (e) => reject('Erreur lors de la recherche du mot.', e)
+  })
+  return result
+}
+
+async function findOrCreateWord(word) {
+  const transaction = idb.transaction([STORES.WORDS.NAME], 'readwrite')
+  const store = transaction.objectStore(STORES.WORDS.NAME)
+  const index = store.index(STORES.WORDS.INDEXES.NAME)
+  const request = index.get(word.toLowerCase())
+
+  const result = await new Promise((resolve, reject) => {
+    request.onsuccess = () => resolve(request.result)
+    request.onerror = (e) => reject('Erreur lors de la recherche du mot.', e)
+  })
+
+  if (result) return result
+
+  const newWord = {
+    name: word.toLowerCase(),
+    translation: '',
+    state: 'unknown',
+    relations: [],
+    info: '',
+    emoji: '',
+    lang: '',
+    updatedAt: Date.now(),
+  }
+
+  const addRequest = store.add(newWord)
 
   return await new Promise((resolve, reject) => {
-    request.onsuccess = () => resolve(request.result)
-    request.onerror = () => reject('Erreur lors de la récupération du mot.')
+    addRequest.onsuccess = () => resolve(newWord)
+    addRequest.onerror = (e) => reject("Erreur lors de l'ajout du mot.", e)
   })
 }
 
 async function addWord(word) {
   const transaction = idb.transaction([STORES.WORDS.NAME], 'readwrite')
   const store = transaction.objectStore(STORES.WORDS.NAME)
-  const request = store.add(word)
+  const request = store.add({
+    ...word,
+    name: word.name.toLowerCase(),
+    updatedAt: Date.now(),
+  })
 
   const result = await new Promise((resolve, reject) => {
     request.onsuccess = () => resolve(request.result)
@@ -221,7 +264,7 @@ async function addWord(word) {
 async function removeWord(id) {
   const transaction = idb.transaction([STORES.WORDS.NAME], 'readwrite')
   const store = transaction.objectStore(STORES.WORDS.NAME)
-  const request = store.delete(id)
+  const request = store.delete(id.toLowerCase())
 
   await new Promise((resolve, reject) => {
     request.onsuccess = () => resolve()
@@ -234,7 +277,11 @@ async function removeWord(id) {
 async function updateWord(word) {
   const transaction = idb.transaction([STORES.WORDS.NAME], 'readwrite')
   const store = transaction.objectStore(STORES.WORDS.NAME)
-  const request = store.put(word)
+  const request = store.put({
+    ...word,
+    name: word.name.toLowerCase(),
+    updatedAt: Date.now(),
+  })
 
   await new Promise((resolve, reject) => {
     request.onsuccess = () => resolve()
@@ -260,4 +307,5 @@ export const Words = {
   getById: getWord,
   remove: removeWord,
   update: updateWord,
+  findOrCreate: findOrCreateWord,
 }

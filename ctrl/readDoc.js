@@ -1,4 +1,6 @@
-import { kll } from '../main'
+import { translation } from '../data/translation'
+import { kll, translateLsKey } from '../main'
+import { Words } from '../utils/idb'
 
 function highlightWords(text) {
   const container = document.createElement('div')
@@ -7,7 +9,7 @@ function highlightWords(text) {
   const wordsSan = container.innerText.split(' ') // Séparer les mots et les caractères spéciaux
 
   return wordsSan
-    .map((word, index) => {
+    .map((word) => {
       const firstChar = word.charAt(0)
       const lastChar = word.charAt(word.length - 1)
       const specialCharsReg = /[`~!@#$%^&*()_|+\-=?;:,.<>/]/g
@@ -18,9 +20,9 @@ function highlightWords(text) {
       }
       if (specialCharsReg.test(lastChar)) {
         word = word.slice(0, -1)
-        text += `<span kll-ctrl="word" kll-s-word="${word}" kll-id="word-${word}-${index}-${Math.random()}" class="cursor-pointer">${word}</span>${lastChar}`
+        text += `<span data-word="${word}" class="cursor-pointer">${word}</span>${lastChar}`
       } else {
-        text += `<span kll-ctrl="word" kll-s-word="${word}" kll-id="word-${word}-${index}-${Math.random()}" class="cursor-pointer">${word}</span>`
+        text += `<span data-word="${word}" class="cursor-pointer">${word}</span>`
       }
 
       return text
@@ -72,8 +74,9 @@ function convertBlocksToHTML(blocks) {
 
 export const readDoc = {
   state: {},
-  render(_, _el, listen) {
-    const doc = listen.value
+  async render(_, _el) {
+    const editorContainer = document.querySelector('[kll-id="editor"]')
+    const doc = editorContainer?.state?.content
 
     if (!doc) return
 
@@ -86,6 +89,74 @@ export const readDoc = {
 
     container.innerHTML = htmlContent
 
-    kll.reload(container)
+    const lang = localStorage.getItem(translateLsKey)
+    const spans = container.querySelectorAll('span[data-word]')
+
+    const actionTemplate = await kll.processTemplate('wordAction')
+
+    const states = ['unknown', 'familiar', 'known']
+
+    for (const span of spans) {
+      if (!span.dataset.word) continue
+      const word = await Words.findOrCreate(span.dataset.word, lang)
+
+      span.setAttribute('data-word-state', word.state)
+
+      span.addEventListener('click', async () => {
+        // === SELECTION ================================
+        const allSelectedWords = document.querySelectorAll('.selected-word')
+        allSelectedWords.forEach((word) => {
+          word.classList.remove('text-rd-highlight', 'selected-word')
+        })
+        span.classList.add('selected-word')
+
+        // === MATCH WORD ================================
+
+        const word = await Words.findOrCreate(span.dataset.word, lang)
+
+        const container = document.getElementById('wordPreview')
+        container.innerHTML = ''
+
+        //SI PAS DE MATCH, MODALE POUR AJOUTER LE MOT
+        const template = await kll.processTemplate('wordPreview')
+        kll.initsIds = [
+          ...kll.initsIds.filter((id) => !id.match(/wordPreview/)),
+        ]
+
+        kll.plugins.smartRender(template, {
+          ...word,
+          word: word.name,
+          translation: word.translation || '',
+          placeholder:
+            translation.translationPlaceholder?.[lang] || 'placeholder',
+          info: word?.info || translation.noInfo?.[lang] || 'no info',
+        })
+
+        container.appendChild(template)
+        const actionsContainer = container.querySelector('#wordActions')
+
+        for (const state of states) {
+          const action = actionTemplate.cloneNode(true)
+          action.innerText = translation[state][lang]
+
+          action.setAttribute('kll-ctrl', 'wordAction')
+          action.setAttribute('kll-s-state', state)
+          action.setAttribute('data-state', state)
+          action.setAttribute('kll-s-word', word.name)
+          if (word.state === state) action.setAttribute('disabled', true)
+          actionsContainer.appendChild(action)
+        }
+
+        const input = container.querySelector('#wordTranslation')
+
+        input?.addEventListener('input', async () => {
+          word.translation = input.value
+          await Words.update(word)
+        })
+
+        kll.reload(container)
+        kll.plugins.translate(container)
+      })
+    }
   },
 }

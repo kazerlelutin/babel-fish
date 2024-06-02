@@ -8,3 +8,6 @@ export * as footer from './footer.html?raw'
 export * as headerMenu from './headerMenu.html?raw'
 export * as wordPreview from './wordPreview.html?raw'
 export * as readDoc from './readDoc.html?raw'
+
+export * as wordPreviewClose from "./wordPreviewClose.html?raw"
+export * as wordAction from "./wordAction.html?raw"

@@ -3,8 +3,9 @@ import Header from '@editorjs/header'
 import List from '@editorjs/list'
 import Table from 'editorjs-table'
 import Quote from '@editorjs/quote'
-
-import { demoDoc } from '../data/demo-doc'
+import { Docs } from '../utils/idb'
+import { seed } from '../utils/seed'
+import { kll } from '../main'
 
 export const editor = {
   state: {
@@ -12,8 +13,36 @@ export const editor = {
     updatedAt: Date.now(),
     content: undefined,
   },
-  async onInit(state, el, e) {
-    const doc = demoDoc
+  async onInit(state) {
+    const { params } = kll.parseRoute()
+
+    if (!params?.id) await seed()
+    const docs = await Docs.get()
+
+    if (docs.length === 0) return
+    Docs.add({
+      content: {
+        blocks: [
+          {
+            type: 'header',
+            data: {
+              text: 'Welcome to your new document',
+              level: 1,
+            },
+          },
+          {
+            type: 'paragraph',
+            data: {
+              text: 'This is a new document. You can start writing here.',
+            },
+          },
+        ],
+      },
+      updatedAt: Date.now(),
+    })
+
+    const doc = docs[0]
+
     const editor = new EditorJS({
       holder: 'editorContainer',
       autofocus: true,

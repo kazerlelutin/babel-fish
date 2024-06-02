@@ -5,8 +5,8 @@ export * from './link.js'
 export * from './confirmDialog.js'
 export * from './returnButton'
 export * from './editor'
-export * from './wordPreview'
 export * from './tabs'
 export * from './readDoc'
+export * from './wordPreviewClose'
 
-export * from "./word"
+export * from "./wordAction"

@@ -375,3 +375,56 @@ h5,
 h6 {
   @apply my-2;
 }
+
+[kll-id='editor'] h1,
+[kll-id='editor'] h2,
+[kll-id='editor'] h3,
+[kll-id='editor'] h4,
+[kll-id='editor'] h5,
+[kll-id='editor'] h6 {
+  color: inherit;
+}
+
+[data-word-state='known'] {
+  color: rgba(82, 158, 114, 1);
+}
+
+[data-word-state='familiar'] {
+  color: rgba(202, 152, 73, 1);
+}
+
+[data-action] {
+  background-color: transparent;
+}
+
+[data-action][data-state='known'] {
+  color: rgba(82, 158, 114, 1);
+  border-color: rgba(82, 158, 114, 1);
+}
+
+[data-action][data-state='known']:disabled {
+  background-color: rgba(82, 158, 114, 1);
+}
+
+[data-action][data-state='unknown'] {
+  color: rgba(94, 135, 201, 1);
+  border-color: rgba(94, 135, 201, 1);
+}
+
+[data-action][data-state='unknown']:disabled {
+  background-color: rgba(94, 135, 201, 1);
+}
+
+[data-action][data-state='familiar'] {
+  color: rgba(202, 152, 73, 1);
+  border-color: rgba(202, 152, 73, 1);
+}
+
+[data-action][data-state='familiar']:disabled {
+  background-color: rgba(202, 152, 73, 1);
+}
+
+[data-action]:disabled {
+  color: black;
+  pointer-events: none;
+}
