@@ -18,7 +18,8 @@ const params = {
   id: 'app',
   routes: {
     '/': import('./pages/index.html?raw').then((m) => m.default),
-    '/docs': import('./pages/about.html?raw').then((m) => m.default),
+    '/docs': import('./pages/docs.html?raw').then((m) => m.default),
+    '/doc/:id': import('./pages/index.html?raw').then((m) => m.default),
     '/category/:category/:section': import('./pages/index.html?raw').then(
       (m) => m.default
     ),

@@ -15,33 +15,12 @@ export const editor = {
   },
   async onInit(state) {
     const { params } = kll.parseRoute()
-
     if (!params?.id) await seed()
     const docs = await Docs.get()
 
     if (docs.length === 0) return
-    Docs.add({
-      content: {
-        blocks: [
-          {
-            type: 'header',
-            data: {
-              text: 'Welcome to your new document',
-              level: 1,
-            },
-          },
-          {
-            type: 'paragraph',
-            data: {
-              text: 'This is a new document. You can start writing here.',
-            },
-          },
-        ],
-      },
-      updatedAt: Date.now(),
-    })
 
-    const doc = docs[0]
+    const doc = params.id ? await Docs.getById(parseInt(params.id)) : docs[0]
 
     const editor = new EditorJS({
       holder: 'editorContainer',
@@ -70,9 +49,9 @@ export const editor = {
       },
       onChange: () => {
         editor.save().then((outputData) => {
-          console.log('Article data: ', outputData)
           state.updatedAt = Date.now()
           state.content = outputData
+          Docs.update({ ...doc, content: outputData })
         })
       },
     })

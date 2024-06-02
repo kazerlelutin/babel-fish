@@ -10,3 +10,5 @@ export * from './readDoc'
 export * from './wordPreviewClose'
 
 export * from "./wordAction"
+export * from "./documents"
+export * from "./addDocBtn"

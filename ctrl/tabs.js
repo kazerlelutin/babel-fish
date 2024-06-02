@@ -15,12 +15,10 @@ export const tabs = {
     const nav = el.querySelector('nav')
 
     const tabs = el.querySelectorAll('[data-tabs]')
-
     if (!state.active && state.tabs.length >= 1) state.active = state.tabs[0]
 
     tabs.forEach((tab) => {
       const tabName = tab.getAttribute('data-tabs')
-      if (state.tabs.includes(tabName)) return
 
       //TODO créer un template pour les tab et passer les infos en attribut
 

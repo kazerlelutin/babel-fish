@@ -63,7 +63,6 @@ export async function seed() {
   }
 
   const docs = await Docs.get()
-
   if (docs.length > 0) return true
   Docs.add({
     ...demoDoc,

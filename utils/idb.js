@@ -146,8 +146,7 @@ async function getDocuments() {
 async function getDocument(id) {
   const transaction = idb.transaction([STORES.DOCS.NAME], 'readonly')
   const store = transaction.objectStore(STORES.DOCS.NAME)
-  const index = store.index(STORES.WORDS.INDEXES.NAME)
-  const request = index.get(id)
+  const request = store.get(id)
 
   return await new Promise((resolve, reject) => {
     request.onsuccess = () => resolve(request.result)

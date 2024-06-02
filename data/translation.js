@@ -125,4 +125,9 @@ export const translation = {
     en: 'Translation',
     ko: '번역',
   },
+  createDoc: {
+    fr: 'Créer un document',
+    en: 'Create a document',
+    ko: '문서 만들기',
+  },
 }
