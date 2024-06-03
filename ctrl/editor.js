@@ -16,12 +16,11 @@ export const editor = {
   },
   async onInit(state) {
     const { params } = kll.parseRoute()
-    if (!params?.id) await seed()
+    await seed()
+
     const docs = await Docs.get()
-
     if (docs.length === 0) return
-
-    const doc = params.id ? await Docs.getById(parseInt(params.id)) : docs[0]
+    const doc = params.id ? docs.find((d) => d.id == params.id) : docs[0]
 
     state.id = doc.id
     const editor = new EditorJS({
