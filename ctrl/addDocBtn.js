@@ -1,4 +1,5 @@
-import { kll } from '../main'
+import { translation } from '../data/translation'
+import { kll, translateLsKey } from '../main'
 import { Docs, openDatabase } from '../utils/idb'
 
 export const addDocBtn = {
@@ -6,6 +7,7 @@ export const addDocBtn = {
     kll.plugins.translate(el)
   },
   async onClick() {
+    const lang = localStorage.getItem(translateLsKey)
     await openDatabase()
     const doc = await Docs.add({
       content: {
@@ -13,7 +15,7 @@ export const addDocBtn = {
           {
             type: 'header',
             data: {
-              text: 'New document',
+              text: translation.newDoc?.[lang] || translation.noTitle?.en,
               level: 2,
             },
           },

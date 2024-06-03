@@ -3,11 +3,11 @@ import { kll, translateLsKey } from '../main'
 import { Words, openDatabase } from '../utils/idb'
 import { WORD_STATES } from '../utils/word-states'
 
-function highlightWords(text) {
+function encapsuleWord(text) {
   const container = document.createElement('div')
   container.innerHTML = text
 
-  const wordsSan = container.innerText.split(' ') // Séparer les mots et les caractères spéciaux
+  const wordsSan = container.innerText.split(' ')
 
   return wordsSan
     .map((word) => {
@@ -37,17 +37,17 @@ function convertBlocksToHTML(blocks) {
       let content = ''
       switch (block.type) {
         case 'header':
-          content = `<h${block.data.level}>${highlightWords(
+          content = `<h${block.data.level}>${encapsuleWord(
             block.data.text
           )}</h${block.data.level}>`
           break
         case 'paragraph':
-          content = `<p>${highlightWords(block.data.text)}</p>`
+          content = `<p>${encapsuleWord(block.data.text)}</p>`
           break
         case 'list':
           const listTag = block.data.style === 'ordered' ? 'ol' : 'ul'
           content = `<${listTag}>${block.data.items
-            .map((item) => `<li>${highlightWords(item)}</li>`)
+            .map((item) => `<li>${encapsuleWord(item)}</li>`)
             .join('')}</${listTag}>`
           break
         case 'table':
@@ -55,15 +55,13 @@ function convertBlocksToHTML(blocks) {
             .map(
               (row) =>
                 `<tr>${row
-                  .map((cell) => `<td>${highlightWords(cell)}</td>`)
+                  .map((cell) => `<td>${encapsuleWord(cell)}</td>`)
                   .join('')}</tr>`
             )
             .join('')}</table>`
           break
         case 'quote':
-          content = `<blockquote>${highlightWords(
-            block.data.text
-          )}</blockquote>`
+          content = `<blockquote>${encapsuleWord(block.data.text)}</blockquote>`
           break
         default:
           break
@@ -77,23 +75,20 @@ export const readDoc = {
   state: {},
   async render(_, _el) {
     const editorContainer = document.querySelector('[kll-id="editor"]')
+    const container = document.querySelector('[kll-id="docContainer"]')
     const doc = editorContainer?.state?.content
 
-    if (!doc) return
-
-    const container = document.querySelector('[kll-id="docContainer"]')
-    if (!container) return
+    if (!doc || !container) return
 
     const blocks = doc?.blocks || []
+    const lang = localStorage.getItem(translateLsKey)
+    const actionTemplate = await kll.processTemplate('wordAction')
 
     const htmlContent = convertBlocksToHTML(blocks)
 
     container.innerHTML = htmlContent
 
-    const lang = localStorage.getItem(translateLsKey)
     const spans = container.querySelectorAll('span[data-word]')
-
-    const actionTemplate = await kll.processTemplate('wordAction')
 
     await openDatabase()
     for (const span of spans) {
@@ -117,7 +112,7 @@ export const readDoc = {
         const container = document.getElementById('wordPreview')
         container.innerHTML = ''
 
-        //SI PAS DE MATCH, MODALE POUR AJOUTER LE MOT
+        // === RENDER WORD ================================
         const template = await kll.processTemplate('wordPreview')
         kll.initsIds = [
           ...kll.initsIds.filter((id) => !id.match(/wordPreview/)),

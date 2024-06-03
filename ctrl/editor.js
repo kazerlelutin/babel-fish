@@ -26,7 +26,6 @@ export const editor = {
     const editor = new EditorJS({
       holder: 'editorContainer',
       autofocus: true,
-
       tools: {
         header: {
           class: Header,

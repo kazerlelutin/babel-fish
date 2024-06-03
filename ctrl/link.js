@@ -1,4 +1,5 @@
 import { kll } from '../main.js'
+
 export const link = {
   onClick(_, el, e) {
     e.preventDefault()

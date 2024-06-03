@@ -165,4 +165,14 @@ export const translation = {
     en: 'Recognized',
     ko: '인정된',
   },
+  newDoc: {
+    fr: 'Nouveau document',
+    en: 'New document',
+    ko: '새 문서',
+  },
+  noTitle: {
+    fr: 'Pas de titre',
+    en: 'No title',
+    ko: '제목 없음',
+  },
 }

@@ -19,9 +19,6 @@ export const tabs = {
 
     tabs.forEach((tab) => {
       const tabName = tab.getAttribute('data-tabs')
-
-      //TODO créer un template pour les tab et passer les infos en attribut
-
       const tabNav = document.createElement('button')
 
       tabNav.addEventListener('click', () => {
@@ -55,11 +52,7 @@ export const tabs = {
     const tabs = el.querySelectorAll('[data-tabs]')
     tabs.forEach((tab) => {
       const tabName = tab.getAttribute('data-tabs')
-      if (state.active === tabName) {
-        tab.style.display = 'block'
-      } else {
-        tab.style.display = 'none'
-      }
+      tab.style.display = state.active === tabName ? 'block' : 'none'
     })
   },
 }

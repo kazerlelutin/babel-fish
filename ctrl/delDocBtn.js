@@ -17,9 +17,11 @@ export const delDocBtn = {
       window.history.pushState({}, '', path)
       kll.injectPage(path)
     }
+
     if (params.id) {
       await openDatabase()
       const doc = await Docs.getById(parseInt(params.id))
+
       state.callback = async () => {
         await openDatabase()
         await Docs.remove(doc.id)

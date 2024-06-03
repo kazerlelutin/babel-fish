@@ -522,6 +522,7 @@ h6 {
 }
 
 .cm-selectionBackground,
+.ce-block--selected .ce-block__content,
 .codex-editor ::selection {
   background-color: rgba(82, 158, 114, 1) !important;
 }

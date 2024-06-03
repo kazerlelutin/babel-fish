@@ -5,7 +5,6 @@ export const wordPreviewClose = {
     kll.plugins.translate(el)
   },
   async onclick() {
-    // === SELECTION ================================
     const allSelectedWords = document.querySelectorAll('.selected-word')
     allSelectedWords.forEach((word) => {
       word.classList.remove('text-rd-highlight', 'selected-word')
