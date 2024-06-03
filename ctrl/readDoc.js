@@ -1,6 +1,7 @@
 import { translation } from '../data/translation'
 import { kll, translateLsKey } from '../main'
 import { Words, openDatabase } from '../utils/idb'
+import { WORD_STATES } from '../utils/word-states'
 
 function highlightWords(text) {
   const container = document.createElement('div')
@@ -94,7 +95,6 @@ export const readDoc = {
 
     const actionTemplate = await kll.processTemplate('wordAction')
 
-    const states = ['unknown', 'familiar', 'known']
     await openDatabase()
     for (const span of spans) {
       if (!span.dataset.word) continue
@@ -135,7 +135,7 @@ export const readDoc = {
         container.appendChild(template)
         const actionsContainer = container.querySelector('#wordActions')
 
-        for (const state of states) {
+        for (const state of WORD_STATES) {
           const action = actionTemplate.cloneNode(true)
           action.innerText = translation[state][lang]
 

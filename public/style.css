@@ -3,6 +3,36 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-bg: #000;
+  --color-text: #ebeadd;
+  --color-link: #378c4c;
+  --color-highlight: #bfba1d;
+  --color-sagwa_young: #76b041;
+  --color-sagwa: #ffc107;
+  --color-sagwa_old: #d32f2f;
+  --color-urban_gray: #37474f;
+  --color-sand: #ddd5c1;
+  --color-pur: #ffffff;
+
+  --color-unknown: #4a90e2;
+  --color-recognized: #d15796;
+  --color-known: #4caf50;
+  --color-learning: #ca9849;
+}
+
+.light {
+  --color-bg: #ebeadd;
+  --color-text: #000;
+  --color-link: #195c29;
+  --color-highlight: #a77e0d;
+
+  --color-unknown: #306fb6;
+  --color-recognized: #aa2168;
+  --color-known: #4caf50;
+  --color-learning: #ad4e00;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -19,7 +49,6 @@
     box-sizing: border-box;
     color-scheme: light;
     transition: color-scheme 500ms ease-in-out;
-    @apply text-rd-text dark:text-dark-text;
   }
 
   h1,
@@ -380,47 +409,56 @@ h6 {
   color: inherit;
 }
 
-[data-word-state='known'] {
-  color: rgba(82, 158, 114, 1);
+[data-word-state='recognized'] {
+  @apply text-rd-recognized; /* Utilisation de la couleur définie pour recognized */
 }
 
-[data-word-state='familiar'] {
-  color: rgba(202, 152, 73, 1);
+[data-word-state='learning'] {
+  @apply text-rd-learning; /* Utilisation de la couleur définie pour learning */
+}
+
+[data-word-state='known'] {
+  @apply text-rd-known; /* Utilisation de la couleur définie pour known */
 }
 
 [data-action] {
-  background-color: transparent;
-}
-
-[data-action][data-state='known'] {
-  color: rgba(82, 158, 114, 1);
-  border-color: rgba(82, 158, 114, 1);
-}
-
-[data-action][data-state='known']:disabled {
-  background-color: rgba(82, 158, 114, 1);
+  @apply bg-transparent text-xs;
 }
 
 [data-action][data-state='unknown'] {
-  color: rgba(94, 135, 201, 1);
-  border-color: rgba(94, 135, 201, 1);
+  @apply text-rd-unknown border-rd-unknown; /* Couleur de texte et de bordure pour unknown */
 }
 
 [data-action][data-state='unknown']:disabled {
-  background-color: rgba(94, 135, 201, 1);
+  @apply bg-rd-unknown; /* Couleur de fond pour unknown */
 }
 
-[data-action][data-state='familiar'] {
-  color: rgba(202, 152, 73, 1);
-  border-color: rgba(202, 152, 73, 1);
+[data-action][data-state='recognized'] {
+  @apply text-rd-recognized border-rd-recognized; /* Couleur de texte et de bordure pour recognized */
 }
 
-[data-action][data-state='familiar']:disabled {
-  background-color: rgba(202, 152, 73, 1);
+[data-action][data-state='recognized']:disabled {
+  @apply bg-rd-recognized; /* Couleur de fond pour recognized */
+}
+
+[data-action][data-state='learning'] {
+  @apply text-rd-learning border-rd-learning; /* Couleur de texte et de bordure pour learning */
+}
+
+[data-action][data-state='learning']:disabled {
+  @apply bg-rd-learning; /* Couleur de fond pour learning */
+}
+
+[data-action][data-state='known'] {
+  @apply text-rd-known border-rd-known; /* Couleur de texte et de bordure pour known */
+}
+
+[data-action][data-state='known']:disabled {
+  @apply bg-rd-known; /* Couleur de fond pour known */
 }
 
 [data-action]:disabled {
-  color: black;
+  color: white;
   pointer-events: none;
 }
 

@@ -155,4 +155,14 @@ export const translation = {
     en: 'Close',
     ko: '닫기',
   },
+  learning: {
+    fr: 'En apprentissage',
+    en: 'Learning',
+    ko: '학습',
+  },
+  recognized: {
+    fr: 'Reconnu',
+    en: 'Recognized',
+    ko: '인정된',
+  },
 }
