@@ -10,8 +10,7 @@ export * as wordPreview from './wordPreview.html?raw'
 export * as readDoc from './readDoc.html?raw'
 export * as wordPreviewClose from './wordPreviewClose.html?raw'
 export * as wordAction from './wordAction.html?raw'
-
-export * as documents from "./documents.html?raw"
-export * as addDocBtn from "./addDocBtn.html?raw"
-export * as delDocBtn from "./delDocBtn.html?raw"
-export * as words from "./words.html?raw"
+export * as documents from './documents.html?raw'
+export * as addDocBtn from './addDocBtn.html?raw'
+export * as delDocBtn from './delDocBtn.html?raw'
+export * as words from './words.html?raw'

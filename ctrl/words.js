@@ -1,10 +1,11 @@
 import { translation } from '../data/translation'
 import { kll, translateLsKey } from '../main'
-import { Words } from '../utils/idb'
+import { Words, openDatabase } from '../utils/idb'
 
 export const words = {
   state: {},
   async onInit(_, el) {
+    await openDatabase()
     const words = await Words.get()
     const lang = localStorage.getItem(translateLsKey)
 

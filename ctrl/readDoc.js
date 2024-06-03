@@ -1,6 +1,6 @@
 import { translation } from '../data/translation'
 import { kll, translateLsKey } from '../main'
-import { Words } from '../utils/idb'
+import { Words, openDatabase } from '../utils/idb'
 
 function highlightWords(text) {
   const container = document.createElement('div')
@@ -95,7 +95,7 @@ export const readDoc = {
     const actionTemplate = await kll.processTemplate('wordAction')
 
     const states = ['unknown', 'familiar', 'known']
-
+    await openDatabase()
     for (const span of spans) {
       if (!span.dataset.word) continue
       const word = await Words.findOrCreate(span.dataset.word, lang)

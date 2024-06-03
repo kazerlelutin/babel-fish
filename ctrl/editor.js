@@ -3,8 +3,7 @@ import Header from '@editorjs/header'
 import List from '@editorjs/list'
 import Table from 'editorjs-table'
 import Quote from '@editorjs/quote'
-import { Docs } from '../utils/idb'
-import { seed } from '../utils/seed'
+import { Docs, openDatabase } from '../utils/idb'
 import { kll } from '../main'
 
 export const editor = {
@@ -14,9 +13,10 @@ export const editor = {
     content: undefined,
     id: undefined,
   },
+
   async onInit(state) {
+    await openDatabase()
     const { params } = kll.parseRoute()
-    await seed()
 
     const docs = await Docs.get()
     if (docs.length === 0) return
@@ -57,5 +57,4 @@ export const editor = {
       },
     })
   },
-  render() {},
 }

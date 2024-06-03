@@ -1,11 +1,12 @@
 import { kll } from '../main'
-import { Docs } from '../utils/idb'
+import { Docs, openDatabase } from '../utils/idb'
 
 export const addDocBtn = {
   onInit(_, el) {
     kll.plugins.translate(el)
   },
   async onClick() {
+    await openDatabase()
     const doc = await Docs.add({
       content: {
         blocks: [

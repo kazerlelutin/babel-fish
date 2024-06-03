@@ -9,6 +9,7 @@ import { TranslatePlugin } from '@kll_/translate'
 import { translation } from './data/translation.js'
 import { lsKEY } from './ctrl/rupteur.js'
 import { openDatabase } from './utils/idb.js'
+import { seed } from './utils/seed.js'
 
 // TRANSLATE ========================
 export const translateLsKey = '__kllbalelfish__lang'
@@ -41,11 +42,9 @@ if (import.meta.env.MODE === 'development') {
 export const kll = new KLL(params)
 
 addEventListener('DOMContentLoaded', async () => {
-  await openDatabase()
   kll.plugins.translate()
-  //const loader = document.querySelector('[data-full-loader]')
-  //console.log('loader', loader)
-  //TODO supprimer un loader ?
+  await openDatabase()
+  await seed()
 })
 
 // Prevent the flash of the dark theme

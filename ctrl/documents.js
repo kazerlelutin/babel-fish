@@ -1,5 +1,5 @@
 import { kll } from '../main'
-import { Docs } from '../utils/idb'
+import { Docs, openDatabase } from '../utils/idb'
 
 export const documents = {
   state: {},
@@ -7,6 +7,7 @@ export const documents = {
     el.render()
   },
   async render(_state, el) {
+    await openDatabase()
     const docs = await Docs.get()
     el.innerHTML = docs
       .map((doc) => {
