@@ -47,6 +47,25 @@ addEventListener('DOMContentLoaded', async () => {
   await seed()
 })
 
+// Register service worker -----------------------------------------------------
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').then(
+      (registration) => {
+        console.log(
+          'ServiceWorker registration successful with scope: ',
+          registration.scope
+        )
+      },
+      (err) => {
+        console.log('ServiceWorker registration failed: ', err)
+      }
+    )
+  })
+}
+
+//console.log('VERSION:', pkg?.version)
+
 // Prevent the flash of the dark theme
 const theme = localStorage.getItem(lsKEY) || 'dark'
 if (theme === 'dark') {
