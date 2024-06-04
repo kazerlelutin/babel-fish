@@ -21,9 +21,9 @@ function encapsuleWord(text) {
       }
       if (specialCharsReg.test(lastChar)) {
         word = word.slice(0, -1)
-        text += `<span data-word="${word}" class="cursor-pointer">${word}</span>${lastChar}`
+        text += `<span data-word="${word}">${word}</span>${lastChar}`
       } else {
-        text += `<span data-word="${word}" class="cursor-pointer">${word}</span>`
+        text += `<span data-word="${word}">${word}</span>`
       }
 
       return text

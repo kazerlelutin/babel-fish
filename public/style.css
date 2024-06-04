@@ -409,6 +409,10 @@ h6 {
   color: inherit;
 }
 
+[data-word] {
+  @apply cursor-pointer;
+}
+
 [data-word-state='recognized'] {
   @apply text-rd-recognized; /* Utilisation de la couleur définie pour recognized */
 }
