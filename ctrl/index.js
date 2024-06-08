@@ -14,3 +14,6 @@ export * from './words'
 export * from './exportDb'
 export * from './importDb'
 export * from './transTest'
+
+export * from "./langSelector"
+export * from "./wordLangSelector"

@@ -172,6 +172,10 @@
     background: theme('colors.rd.link');
     border-radius: 5px;
   }
+
+  select {
+    @apply outline-none border border-rd-unknown rounded-sm p-1 cursor-pointer bg-rd-bg text-rd-text text-sm;
+  }
 }
 
 @layer components {

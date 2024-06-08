@@ -26,7 +26,9 @@ export const transTest = {
 
       const words = await Words.get()
       const translatedWords = words
-        .filter((w) => w.translation)
+        .filter(
+          (w) => w.translation && w.lang === word.lang && w.id !== word.id
+        )
         .sort(() => Math.random() - 0.5)
         .slice(0, 3)
       const answers = [

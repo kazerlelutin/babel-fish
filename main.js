@@ -12,8 +12,12 @@ import { openDatabase } from './utils/idb.js'
 import { seed } from './utils/seed.js'
 
 // TRANSLATE ========================
+const defaultLang = window.navigator.language.split('-')[0]
+
 export const translateLsKey = '__kllbalelfish__lang'
-localStorage.setItem(translateLsKey, window.navigator.language.split('-')[0])
+export const defaultLangWordKey = '__kllbalelfish__defaultLangWord'
+
+localStorage.setItem(translateLsKey, defaultLang)
 
 const params = {
   id: 'app',

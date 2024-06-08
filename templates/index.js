@@ -15,5 +15,5 @@ export * as delDocBtn from './delDocBtn.html?raw'
 export * as exportDb from './exportDb.html?raw'
 export * as importDb from './importDb.html?raw'
 export * as transTest from './transTest.html?raw'
-
-export * as answerTest from "./answerTest.html?raw"
+export * as answerTest from './answerTest.html?raw'
+export * as langSelector from './langSelector.html?raw'
