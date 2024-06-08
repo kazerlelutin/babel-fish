@@ -19,8 +19,14 @@ export const editor = {
     const { params } = kll.parseRoute()
 
     const docs = await Docs.get()
+
     if (docs.length === 0) return
-    const doc = params.id ? docs.find((d) => d.id == params.id) : docs[0]
+    const doc = params.id
+      ? docs.find((d) => d.id == params.id)
+      : docs.sort((a, b) => b.updatedAt - a.updatedAt)[0]
+
+    // update doc for home page
+    await Docs.update(doc)
 
     state.id = doc.id
     const editor = new EditorJS({
