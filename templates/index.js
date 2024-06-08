@@ -12,3 +12,8 @@ export * as wordPreviewClose from './wordPreviewClose.html?raw'
 export * as wordAction from './wordAction.html?raw'
 export * as addDocBtn from './addDocBtn.html?raw'
 export * as delDocBtn from './delDocBtn.html?raw'
+export * as exportDb from './exportDb.html?raw'
+export * as importDb from './importDb.html?raw'
+export * as transTest from './transTest.html?raw'
+
+export * as answerTest from "./answerTest.html?raw"

@@ -466,6 +466,10 @@ h6 {
   pointer-events: none;
 }
 
+[data-hidden] {
+  display: none;
+}
+
 .ce-popover {
   --color-background: theme('colors.dark.bg');
   --color-border: theme('colors.dark.link');

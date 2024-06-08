@@ -227,7 +227,6 @@ async function findOrCreateWord(word) {
     name: word.toLowerCase(),
     translation: '',
     state: 'unknown',
-    relations: [],
     info: '',
     emoji: '',
     lang: '',

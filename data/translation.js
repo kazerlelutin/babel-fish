@@ -175,4 +175,19 @@ export const translation = {
     en: 'No title',
     ko: '제목 없음',
   },
+  sync: {
+    fr: 'Synchroniser',
+    en: 'Synchronize',
+    ko: '동기화',
+  },
+  noData: {
+    fr: 'Pas de données',
+    en: 'No data',
+    ko: '데이터 없음',
+  },
+  explainTest: {
+    fr: 'Trouvez la traduction de ce mot',
+    en: 'Find the translation of this word',
+    ko: '이 단어의 번역을 찾으세요',
+  },
 }
