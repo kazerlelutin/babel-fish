@@ -33,6 +33,7 @@ export const importDb = {
     )
 
     for (const word of wordsToAdd) {
+      delete word.id
       await Words.add(word)
     }
 
@@ -56,6 +57,7 @@ export const importDb = {
     )
 
     for (const doc of docsToAdd) {
+      delete doc.id
       await Docs.add(doc)
     }
 
