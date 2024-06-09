@@ -1,5 +1,5 @@
 import { translation } from '../data/translation'
-import { kll, translateLsKey } from '../main'
+import { defaultLangWordKey, kll, translateLsKey } from '../main'
 import { Words, openDatabase } from '../utils/idb'
 import { WORD_STATES } from '../utils/word-states'
 
@@ -120,6 +120,7 @@ export const readDoc = {
 
         kll.plugins.smartRender(template, {
           ...word,
+          lang: word.lang || localStorage.getItem(defaultLangWordKey),
           word: word.name,
           translation: word.translation || '',
           placeholder:
@@ -159,6 +160,7 @@ export const readDoc = {
 
         input?.addEventListener('input', async () => {
           word.translation = input.value
+
           await Words.update(word)
         })
 
