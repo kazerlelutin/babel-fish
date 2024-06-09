@@ -49,6 +49,8 @@ export const kll = new KLL(params)
 addEventListener('DOMContentLoaded', async () => {
   kll.plugins.translate()
 
+  console.log('kll:', localStorage.getItem(cookieConsentKey))
+
   if (localStorage.getItem(cookieConsentKey) !== 'consent') {
     window.history.pushState({}, '', '/consent')
     kll.injectPage('/consent')
