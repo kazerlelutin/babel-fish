@@ -13,15 +13,7 @@ export const exportDb = {
     const docs = await Docs.get()
 
     const data = {
-      // no necessary to get empty words, they will be regenerated anyway
-      words: words.filter(
-        (word) =>
-          !word.info &&
-          !word.translation &&
-          !word.emoji &&
-          !word.lang &&
-          word.state === 'unknown'
-      ),
+      words,
       docs,
     }
 
