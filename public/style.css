@@ -414,7 +414,7 @@ h6 {
 }
 
 [data-word] {
-  @apply cursor-pointer;
+  @apply cursor-pointer break-keep;
 }
 
 [data-word-state='recognized'] {
