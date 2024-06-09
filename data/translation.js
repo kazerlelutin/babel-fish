@@ -200,4 +200,59 @@ export const translation = {
     en: 'We use cookies and similar technologies to improve your experience on our site. The application does not require a user account and does not use any third-party cookies for tracking. However, we need your consent to use local storage to save your user preferences (language, dark mode, etc.) and the data you enter in the application. Without your consent, the application will not be usable. For more information, please refer to our privacy policy (coming soon).',
     ko: '우리는 당신의 경험을 향상시키기 위해 쿠키와 유사한 기술을 사용합니다. 이 애플리케이션은 사용자 계정이 필요하지 않으며 추적을 위한 제3자 쿠키를 사용하지 않습니다. 그러나 사용자 환경 설정(언어, 다크 모드 등) 및 애플리케이션에 입력한 데이터를 저장하기 위해 로컬 저장소를 사용하기 위해 사용자의 동의가 필요합니다. 사용자의 동의 없이는 애플리케이션을 사용할 수 없습니다. 자세한 정보는 개인 정보 보호 정책을 참조하십시오(준비 중).',
   },
+  updatedWord: {
+    fr: 'Mot mis à jour',
+    en: 'Word updated',
+    ko: '단어가 업데이트되었습니다',
+  },
+  updatedWord_plural: {
+    fr: 'Mots mis à jour',
+    en: 'Words updated',
+    ko: '단어가 업데이트되었습니다',
+  },
+  addedWord: {
+    fr: 'Mot ajouté',
+    en: 'Word added',
+    ko: '단어가 추가되었습니다',
+  },
+  addedWord_plural: {
+    fr: 'Mots ajoutés',
+    en: 'Words added',
+    ko: '단어가 추가되었습니다',
+  },
+  updatedDoc: {
+    fr: 'Document mis à jour',
+    en: 'Document updated',
+    ko: '문서가 업데이트되었습니다',
+  },
+  updatedDoc_plural: {
+    fr: 'Documents mis à jour',
+    en: 'Documents updated',
+    ko: '문서가 업데이트되었습니다',
+  },
+  addedDoc: {
+    fr: 'Document ajouté',
+    en: 'Document added',
+    ko: '문서가 추가되었습니다',
+  },
+  addedDoc_plural: {
+    fr: 'Documents ajoutés',
+    en: 'Documents added',
+    ko: '문서가 추가되었습니다',
+  },
+  exportData: {
+    fr: 'Exporter les données',
+    en: 'Export data',
+    ko: '데이터 내보내기',
+  },
+  importData: {
+    fr: 'Importer les données',
+    en: 'Import data',
+    ko: '데이터 가져오기',
+  },
+  importExportDesc: {
+    fr: "L'importation et l'exportation de données vous permettent de sauvegarder et de récupérer vos préférences utilisateur, comme les mots et les documents. Lors de l'importation, les mots et documents existants seront mis à jour avec les nouvelles informations, et les nouveaux éléments seront ajoutés. Exporter vos données génère un fichier que vous pouvez utiliser pour les réimporter plus tard, assurant ainsi une continuité de votre expérience utilisateur.",
+    en: 'Importing and exporting data allows you to back up and retrieve your user preferences, such as words and documents. When importing, existing words and documents will be updated with new information, and new items will be added. Exporting your data generates a file that you can use to re-import them later, ensuring continuity of your user experience.',
+    ko: '데이터 가져오기 및 내보내기를 통해 사용자 환경 설정(단어 및 문서와 같은)을 백업하고 복원할 수 있습니다. 가져오기 시 기존 단어 및 문서는 새 정보로 업데이트되며 새 항목이 추가됩니다. 데이터를 내보내면 나중에 다시 가져와 사용자 환경 설정의 연속성을 보장할 수 있는 파일이 생성됩니다.',
+  },
 }

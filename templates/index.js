@@ -17,5 +17,5 @@ export * as importDb from './importDb.html?raw'
 export * as transTest from './transTest.html?raw'
 export * as answerTest from './answerTest.html?raw'
 export * as langSelector from './langSelector.html?raw'
-
-export * as consentButton from "./consentButton.html?raw"
+export * as consentButton from './consentButton.html?raw'
+export * as importResult from './importResult.html?raw'
