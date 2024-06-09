@@ -1,3 +1,4 @@
+import { cookieConsentKey } from '../main'
 import { switchClasses } from '../utils/switchClasses'
 
 export const lsKEY = 'rc__theme'
@@ -19,7 +20,8 @@ function rupteurTheme(theme, el) {
     ? switchClasses(document.documentElement, 'dark', 'light')
     : switchClasses(document.documentElement, 'light', 'dark')
 
-  localStorage.setItem(lsKEY, theme)
+  if (localStorage.getItem(cookieConsentKey) === 'consent')
+    localStorage.setItem(lsKEY, theme)
 }
 
 export const rupteur = {

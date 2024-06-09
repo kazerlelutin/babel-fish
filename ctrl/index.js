@@ -14,6 +14,7 @@ export * from './words'
 export * from './exportDb'
 export * from './importDb'
 export * from './transTest'
-
-export * from "./langSelector"
-export * from "./wordLangSelector"
+export * from './langSelector'
+export * from './wordLangSelector'
+export * from './consentButton'
+export * from './consentMsg.js'

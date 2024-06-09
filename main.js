@@ -8,21 +8,21 @@ import {
 import { TranslatePlugin } from '@kll_/translate'
 import { translation } from './data/translation.js'
 import { lsKEY } from './ctrl/rupteur.js'
-import { openDatabase } from './utils/idb.js'
-import { seed } from './utils/seed.js'
 
-// TRANSLATE ========================
-const defaultLang = window.navigator.language.split('-')[0]
-
+// PERSIST DATAS  ========================
+export const defaultLang = window.navigator.language.split('-')[0]
 export const translateLsKey = '__kllbalelfish__lang'
 export const defaultLangWordKey = '__kllbalelfish__defaultLangWord'
+export const cookieConsentKey = '__kllbalelfish__cookieConsent'
 
-localStorage.setItem(translateLsKey, defaultLang)
+if (localStorage.getItem(cookieConsentKey) === 'consent')
+  localStorage.setItem(translateLsKey, defaultLang)
 
 const params = {
   id: 'app',
   routes: {
     '/': import('./pages/index.html?raw').then((m) => m.default),
+    '/consent': import('./pages/consent.html?raw').then((m) => m.default),
     '/sync': import('./pages/sync.html?raw').then((m) => m.default),
     '/docs': import('./pages/docs.html?raw').then((m) => m.default),
     '/doc/:id': import('./pages/index.html?raw').then((m) => m.default),
@@ -48,8 +48,11 @@ export const kll = new KLL(params)
 
 addEventListener('DOMContentLoaded', async () => {
   kll.plugins.translate()
-  await openDatabase()
-  await seed()
+
+  if (localStorage.getItem(cookieConsentKey) !== 'consent') {
+    window.history.pushState({}, '', '/consent')
+    kll.injectPage('/consent')
+  }
 })
 
 // Register service worker -----------------------------------------------------

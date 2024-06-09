@@ -190,4 +190,14 @@ export const translation = {
     en: 'Find the translation of this word',
     ko: '이 단어의 번역을 찾으세요',
   },
+  acceptCookie: {
+    fr: 'Accepter les cookies',
+    en: 'Accept cookies',
+    ko: '쿠키 수락',
+  },
+  consentMsg: {
+    fr: "Nous utilisons des cookies et des technologies similaires pour améliorer votre expérience sur notre site. L'application ne nécessite pas de compte utilisateur et n'utilise aucun cookie tiers pour le suivi. Cependant, nous avons besoin de votre consentement pour utiliser le stockage local afin d'enregistrer vos préférences utilisateur (langue, mode nuit, etc.) et les données que vous entrez dans l'application. Sans votre consentement, l'application ne sera pas utilisable. Pour plus d'informations, veuillez consulter notre politique de confidentialité (à venir).",
+    en: 'We use cookies and similar technologies to improve your experience on our site. The application does not require a user account and does not use any third-party cookies for tracking. However, we need your consent to use local storage to save your user preferences (language, dark mode, etc.) and the data you enter in the application. Without your consent, the application will not be usable. For more information, please refer to our privacy policy (coming soon).',
+    ko: '우리는 당신의 경험을 향상시키기 위해 쿠키와 유사한 기술을 사용합니다. 이 애플리케이션은 사용자 계정이 필요하지 않으며 추적을 위한 제3자 쿠키를 사용하지 않습니다. 그러나 사용자 환경 설정(언어, 다크 모드 등) 및 애플리케이션에 입력한 데이터를 저장하기 위해 로컬 저장소를 사용하기 위해 사용자의 동의가 필요합니다. 사용자의 동의 없이는 애플리케이션을 사용할 수 없습니다. 자세한 정보는 개인 정보 보호 정책을 참조하십시오(준비 중).',
+  },
 }

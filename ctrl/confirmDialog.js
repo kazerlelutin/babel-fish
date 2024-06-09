@@ -1,7 +1,6 @@
 import { kll } from '../main'
 
 function createConfirmModal(msg, subMsg, confirmCallback, cancelCallback) {
-  // create elements
   const dialog = document.createElement('dialog')
 
   dialog.classList.add(

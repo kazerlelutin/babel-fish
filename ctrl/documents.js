@@ -3,7 +3,6 @@ import { kll, translateLsKey } from '../main'
 import { Docs, openDatabase } from '../utils/idb'
 
 export const documents = {
-  state: {},
   onInit(_, el) {
     el.render()
   },

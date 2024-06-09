@@ -72,7 +72,6 @@ function convertBlocksToHTML(blocks) {
 }
 
 export const readDoc = {
-  state: {},
   async render(_, _el) {
     const editorContainer = document.querySelector('[kll-id="editor"]')
     const container = document.querySelector('[kll-id="docContainer"]')
