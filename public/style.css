@@ -202,11 +202,11 @@
   }
 
   .btn-confirm {
-    @apply border border-rd-sagwa_young text-rd-bg p-2 rounded-md;
+    @apply border border-rd-sagwa_young p-2 rounded-md;
   }
 
   .btn-cancel {
-    @apply border border-rd-sagwa_old text-rd-bg p-2 rounded-md;
+    @apply border border-rd-sagwa_oldS p-2 rounded-md;
   }
 }
 
