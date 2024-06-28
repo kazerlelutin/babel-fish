@@ -5,6 +5,7 @@ import Table from 'editorjs-table'
 import Quote from '@editorjs/quote'
 import { Docs, openDatabase } from '../utils/idb'
 import { kll } from '../main'
+import { debounce } from '../utils/debounce'
 
 export const editor = {
   state: {
@@ -53,13 +54,13 @@ export const editor = {
         state.updatedAt = Date.now()
         state.content = doc.content
       },
-      onChange: () => {
+      onChange: debounce(() => {
         editor.save().then((outputData) => {
           state.updatedAt = Date.now()
           state.content = outputData
           Docs.update({ ...doc, content: outputData })
         })
-      },
+      }, 1000), // Délais de 1000ms pour le debounce
     })
   },
 }

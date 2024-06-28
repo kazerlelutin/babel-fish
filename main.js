@@ -27,6 +27,7 @@ const params = {
     '/docs': import('./pages/docs.html?raw').then((m) => m.default),
     '/doc/:id': import('./pages/index.html?raw').then((m) => m.default),
     '/words': import('./pages/words.html?raw').then((m) => m.default),
+    '/legal': import('./pages/legal.html?raw').then((m) => m.default),
   },
   plugins: [
     CreateComponentPlugin,

@@ -206,7 +206,7 @@
   }
 
   .btn-cancel {
-    @apply border border-rd-sagwa_oldS p-2 rounded-md;
+    @apply border border-rd-sagwa_old p-2 rounded-md;
   }
 }
 
